@@ -6,17 +6,8 @@
     <title>Blog | <%= title %> </title>
 </head>
 <body>
-    <nav>
-        <div class="site-title">
-            <a href="/">Blogs</a>
-        </div>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/blogs">Blogs</a></li>
-        </ul>
-    </nav>
-    <div class="blogs content">
+    <%- include("partials/nav") %>
+   <div class="blogs content">
         <h2>All Blogs</h2>
         <% if (blogs.length>0){%>
             <% blogs.forEach(blog=>{%>
