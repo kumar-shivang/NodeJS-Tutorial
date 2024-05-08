@@ -2,4 +2,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog | <%= title %> </title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+        body{
+            font-family: Montserrat;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        h1, h2, h3, h4, h5, h6{
+            color: #333;
+        }
+        a{
+            text-decoration: none;
+            color: #333;
+        }
+        a:hover{
+            text-decoration: underline;
+        }
+        .content{
+            padding: 20px;
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+        }
+        nav a{
+            color: white;
+            margin: 0 10px;
+        }
+        nav ul{
+            display: flex;
+            list-style: none;
+        }
+        .site-title{
+            font-size: 1.5em;
+        }
+        .blog {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+        }
+        .about {
+            max-width: 600px;
+            margin: 0 auto;
+            border: #333 1px solid;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        .input {
+            margin: 10px 0;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .input input {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+
+    </style>
 </head>
