@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("partials/head") %>
+  <body>
+    
+    <%- include("partials/nav") %>
+    <div class="blog">
+          <h1 id="heading"> <%= blog.title %> </h1>
+          <h2 id="subheading"><%= blog.snippet %></h2>
+          <p id="body"> <%= blog.body %> </p>
+         <a class="delete" data-doc="<%= blog._id %>">Delete</a> 
+        </div>
+</body>
+  <%- include("partials/footer") %>
+  <script>
+    const deleteBtn = document.querySelector('.delete');
+    deleteBtn.addEventListener('click', (e) => {
+      const id = e.target.getAttribute('data-doc');
+      fetch(`/blogs/${id}`, {
+        method: 'DELETE'
+      }).then(res => {
+        window.location.href = '/blogs';
+      });
+    });
+  </script>
+</html>
