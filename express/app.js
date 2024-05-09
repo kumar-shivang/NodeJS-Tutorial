@@ -3,7 +3,8 @@ const express = require("express");
 const morgan = require("morgan");
 const Blog = require("../models/blog");
 const app = express();
-const dbURI = "mongodb+srv://shivangkumar1857:PE6Pk2LbHL.BEQ@blog-db.kmhjijg.mongodb.net/?retryWrites=true&w=majority&appName=blog-db"
+const dbURI =
+  // "mongodb+srv://username:password@blog-db.kmhjijg.mongodb.net/?retryWrites=true&w=majority&appName=blog-db";
 const mongoose = require("mongoose");
 mongoose
   .connect(dbURI)
@@ -37,24 +38,30 @@ app.get("/add-blog", (req, res) => {
     });
 });
 
+app.get("/all-blogs", (req, res) => {
+  Blog.find()
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+app.get("/single-blog", (req, res) => {
+  Blog.findById("663bbbf226910f3292ba55ae")
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+});
+
 app.get("/", (req, res) => {
-  let blogs = [
-    {
-      title: "Yoshi finds eggs",
-      snippet: "Lorem ipsum dolor sit amet consectetur",
-    },
-    {
-      title: "Mario finds stars",
-      snippet: "Lorem ipsum dolor sit amet consectetur",
-    },
-    {
-      title: "How to defeat bowser",
-      snippet: "Lorem ipsum dolor sit amet consectetur",
-    },
-  ];
-  // let blogs = []
-  res.render("index.ejs", { title: "Home", blogs });
-  console.log("sent index.html");
+  res.redirect("/blogs");
+  // res.render("index.ejs", { title: "Home", blogs });
+  // console.log("sent index.html");
 });
 
 app.get("/about", (req, res) => {
@@ -69,6 +76,16 @@ app.get("about-me", (req, res) => {
   res.redirect("/about");
 });
 
+app.get("/blogs", (req, res) => {
+  Blog.find()
+    .then((result) => {
+      res.render("index.ejs", { title: "All Blogs", blogs: result });
+    })
+    .catch((err) => {
+      // res.send(err);
+      console.log(err);
+    });
+});
 app.get("/blogs", (req, res) => {
   res.render("create.ejs", { title: "Create a new blog" });
 });
